@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1371411124 source:c:\users\pieter segaert\documents\github\pancake_glutton\pancakeglutton\main.cpp
+	<iostream>
+	<string>
+

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 
+
 using namespace std;
 
 struct Person
@@ -9,29 +10,47 @@ struct Person
     int nPancake;
 };
 
-Person asPersonList[10];
-
-void MakePerson(asPersonList, int &ind)
-{
-    cout << "Enter information on person"<<endl;
-    cout << "ID: ";
-    char szName[100];
-    cin.getline(szName, 100);
-    cout << "Enter number of pancakes: ";
-    int nPancake;
-    cin >> nPancake;
-    asPersonList[ind].spersonName=szName;
-    asPersonList[ind].nPancake=nPancake;
-    cout << "Person " << asPersonList[ind].spersonName << " ate " << asPersonList[ind].nPancake <<endl;
-    break;
-}
+const int nPersons =5;
+Person MakePerson();
+void printSortedList(const Person asPersonList[]);
 
 int main()
 {
+    Person asPersonList[nPersons];
     cout << "Welcome to the Pancake Program" << endl;
-    for(int i=0,i<10,i++)
+    for(int i=0;i<nPersons;i++)
     {
-        MakePerson(asPersonList, i)
+        asPersonList[i]=MakePerson();
     }
+    printSortedList(asPersonList);
     return 0;
+}
+
+Person MakePerson()
+{
+    cout << "Enter information on person"<<endl;
+    cout << "ID: ";
+    int nName;
+    cin >> nName;
+    cout << "Enter number of pancakes: ";
+    int nPancake;
+    cin >> nPancake;
+    Person JohnDoe;
+    JohnDoe.spersonName=nName;
+    JohnDoe.nPancake=nPancake;
+    //cout << "Person " << JohnDoe.spersonName << " ate " << JohnDoe.nPancake <<endl;
+    return JohnDoe;
+}
+
+bool comparePersons(const Person &a, const Person &b)
+{
+    return a.nPancake < b.nPancake;
+}
+
+void printSortedList(const Person asPersonList[])
+{
+    for(int i=0; i<nPersons; i++)
+    {
+        cout << "Person " << asPersonList[i].spersonName << " ate " << asPersonList[i].nPancake << " pancakes." <<endl;
+    }
 }
