@@ -20,12 +20,14 @@ int main()
 {
     Person asPersonList[nPersons];
     cout << "Welcome to the Pancake Program" << endl;
+    cout << "Enter information on persons and the program will analyse \n \n" <<endl;
     for(int i=0;i<nPersons;i++)
     {
         asPersonList[i]=MakePerson();
     }
-    bubbleSort(asPersonList);
-    cout << "\n Here comes the analysed info" <<endl;
+    //bubbleSort(asPersonList);
+    sort(asPersonList, asPersonList + nPersons, comparePersons);
+    cout << "\nHere comes the analysed info" <<endl;
     printSortedList(asPersonList);
     return 0;
 }
@@ -39,6 +41,7 @@ Person MakePerson()
     cout << "Enter number of pancakes: ";
     int nPancake;
     cin >> nPancake;
+    cin.ignore();
     Person JohnDoe;
     JohnDoe.spersonName=nName;
     JohnDoe.nPancake=nPancake;
